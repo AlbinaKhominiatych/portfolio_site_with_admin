@@ -1,0 +1,120 @@
+<!-- base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CV - Albina Khominiatych</title>
+    <style>
+        /* стилі для оформлення  CV */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            display: flex;
+        }
+        #sidebar {
+            width: 400px;
+            height: 100%;
+            background-color: #E6E7E8;
+
+        }
+        #content {
+            flex-grow: 1;
+            padding: 30px;
+        }
+        #content h1 {
+            font-size: 50px;
+        }
+        #photo img {
+            width: 400px;
+            height: auto;
+            margin-top: -40px;
+            filter: grayscale(90%);
+        }
+        #info h2 {
+            font-size: 20px;
+        }
+        #info p {
+            font-size: 16px;
+     }
+        header {
+            text-align: top;
+            }
+        #contacts h2,
+        #expertise h2 {
+            margin-left: 20px;
+         }
+         #experience {
+            border-top: 5px solid lightgray;
+            padding-top: 5px;
+        }
+        #experience .left-column {
+            width: 30%;
+            float: left;
+            font-size: 14px;
+        }
+        #experience .right-column {
+            width: 70%;
+            float: right;
+        }
+        #experience::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="sidebar">
+            <div id="photo">
+                <img src="{{ MEDIA_URL }}myCV_photo.jpg" alt="My Photo">
+            </div>
+            <section id="contacts">
+                <h2>Contacts</h2>
+                <ul>
+                    <li>Email: hominyatichalbina@gmail.com</li>
+                    <li>Phone: +380 99 79 110 16</li>
+                </ul>
+            </section>
+            <section id="expertise">
+                <h2>Expertise</h2>
+                <ul>
+                    <li>Skill 1</li>
+                    <li>Skill 2</li>
+                    <!-- додаткові навички -->
+                </ul>
+            </section>
+        </div>
+        <section id="content">
+            <header>
+                <h1>{{ first_name }} {{ last_name }}</h1>
+                <h2>{{ profession }}</h2>
+            </header>
+            <div id="info">
+                <p>
+                   {{ description }}
+                </p>
+            </div>
+            <section id="experience">
+                <header>
+                <h2>EXPERIENCE</h2>
+                </header>
+                <div class="left-column">
+                    <p>{{ start_year }}-{{ end_year }}</p>
+                    <p>{{experience_duration}} year</p>
+                </div>
+                <div class="right-column">
+                    <h2>{{ position }}</h2>
+                    <ul>
+                        <li>{{description_experience}}</li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </div>
+</body>
+</html>

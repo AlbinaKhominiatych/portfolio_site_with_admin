@@ -1,0 +1,22 @@
+<!-- cv.html -->
+<h1>{{ cv.name }}</h1>
+<p>{{ cv.profession }}</p>
+<p>{{ cv.description }}</p>
+
+<h2>Contact Information</h2>
+<p>Email: {{ cv.contacts.email }}</p>
+<p>Phone: {{ cv.contacts.phone }}</p>
+
+<h2>Expertise</h2>
+<ul>
+    {% for skill in cv.expertise.all %}
+        <li>{{ skill.skill }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Experience</h2>
+{% for experience in cv.experience.all %}
+    <h3>{{ experience.position }}</h3>
+    <p>{{ experience.start_date }} - {{ experience.end_date }}</p>
+    <p>{{ experience.description }}</p>
+{% endfor %}
