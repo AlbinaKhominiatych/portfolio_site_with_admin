@@ -70,9 +70,15 @@
 <body>
     <div id="container">
         <div id="sidebar">
-            <div id="photo">
-                <img src="{{ MEDIA_URL }}myCV_photo.jpg" alt="My Photo">
-            </div>
+           <div id="photo">
+    {% if photo %}
+        <img src="{{ photo.image.url }}" alt="My Photo">
+    {% else %}
+        <p>No photo available.</p>
+    {% endif %}
+           </div>
+
+
             <section id="contacts">
                 <h2>Contacts</h2>
                 <ul>

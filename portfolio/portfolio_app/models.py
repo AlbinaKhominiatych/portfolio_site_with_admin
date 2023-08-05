@@ -1,5 +1,7 @@
 from django.db import models
 from datetime import datetime
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 
 class Project(models.Model):
@@ -40,4 +42,13 @@ class Experience(models.Model):
 
     def __str__(self):
         return f"{self.position} ({self.start_year}-{self.end_year})"
+
+class Photo(models.Model):
+    image = models.ImageField(upload_to='cv_photos/', blank=True, null=True)
+    thumbnail = ImageSpecField(source='image',
+                               processors=[ResizeToFill(400, 400)],
+                               format='JPEG',
+                               options={'quality': 60})
+    def __str__(self):
+        return f"Photo{self.id}"
 
